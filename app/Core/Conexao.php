@@ -15,7 +15,7 @@ class Conexao
             $dbname = "loja";
             $usuario = "postgres";
             $senha = "admin";
-            $host = "loja";
+            $host = "db";
             $porta = "5432";
 
             $dsn = "pgsql:host=$host;port=$porta;dbname=$dbname";

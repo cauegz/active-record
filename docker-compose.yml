@@ -1,0 +1,39 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - composer_vendor:/var/www/html/vendor
+    environment:
+      POSTGRES_DBNAME: loja
+      POSTGRES_USER: postgres
+      POSTGRES_PASS: admin
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "composer install --no-interaction &&
+             apache2-foreground"
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: loja
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d loja"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:
+  composer_vendor:
