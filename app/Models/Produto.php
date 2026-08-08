@@ -5,9 +5,9 @@ use App\Core\Model;
 class Produto extends Model{
     protected static string $table = "produto";
     protected ?int $id = null;
-    private string $nome;
-    private string $preco;
-    private string $descricao;
+    protected string $nome;
+    protected string $preco;
+    protected string $descricao;
 
     /**
      * Get the value of descricao

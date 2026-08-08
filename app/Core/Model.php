@@ -8,11 +8,6 @@ abstract class Model {
     protected static PDO $pdo;
     protected static string $table;
 
-    public function __construct()
-    {
-        $pdo = Conexao::getConnection();
-    }
-
     public function save(){
         $atributos = get_object_vars($this);
 
@@ -20,37 +15,54 @@ abstract class Model {
             //UPDATE
             $campos = [];
 
-            foreach($atributos as $coluna){
+            foreach($atributos as $coluna => $valor){
                 if($coluna != "id"){
-                    $campos[] = "$coluna = :coluna";
+                    $campos[] = "$coluna = :$coluna";
                 }
             }
-            $sql = "UPDATE " . static::$table . " SET " . implode(",", $campos) . "WHERE id = :id";
+            $sql = "UPDATE " . static::$table . " SET " . implode(",", $campos) . " WHERE id = :id";
         } else {
             //INSERT
+            unset($atributos['id']);
             $colunas = array_keys($atributos);
             $sql = "INSERT INTO " . static::$table . "(" . implode(",", $colunas) . ") VALUES (:" . implode(", :", $colunas) . ")";
         }
-        $stmt = static::$pdo->prepare($sql);
+        $stmt = static::getPDO()->prepare($sql);
         foreach($atributos as $campo => $valor){
             $stmt->bindValue(":$campo", $valor);
         }
+        
         return $stmt->execute();
     }
 
     public function delete(){
         $sql = "DELETE FROM " . static::$table . " WHERE id = :id";
-        $stmt = static::$pdo->prepare($sql);
+        $stmt = static::getPDO()->prepare($sql);
         $stmt->execute([":id" => $this->id]);
     }
 
     public static function find($id){
         $sql = "SELECT * FROM " . static::$table . " WHERE id = :id";
-        $stmt = static::$pdo->prepare($sql);
+        $stmt = static::getPDO()->prepare($sql);
         $stmt->execute([":id" => $id]);
         
         $stmt->setFetchMode(PDO::FETCH_CLASS, static::class);
 
         return $stmt->fetch();
+    }
+
+    public static function all(){
+        $sql = "SELECT * FROM " . static::$table;
+        $stmt = static::getPDO()->prepare($sql);
+        $stmt->execute();
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, static::class);
+
+        return $stmt->fetchAll();
+    }
+
+    protected static function getPDO(){
+        if(!isset(static::$pdo)) static::$pdo = Conexao::getConnection();
+        return static::$pdo;
     }
 }
