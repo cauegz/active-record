@@ -1,8 +1,13 @@
 <?php
-use App\Models\Usuario;
+
+use App\Core\Router;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$usuario = new Usuario();
+$router = new Router();
 
-var_dump(Usuario::all());
+//rotas fixas sempre antes de dinamicas
+$router->addRoute("/usuario", "Usuario@formulario");
+
+
+$router->execute(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
