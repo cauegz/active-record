@@ -1,50 +1,51 @@
 <?php
 namespace App\Models;
+
 use App\Core\Model;
 
-class Produto extends Model{
-    protected static string $table = "produto";
+class Servico extends Model{
+    protected static string $table = "servico";
     protected ?int $id = null;
     protected string $nome;
-    protected string $preco;
-    protected string $descricao;
+    protected float $preco;
+    protected int $duracao_min;
 
     /**
-     * Get the value of descricao
+     * Get the value of id
      */ 
-    public function getDescricao()
+    public function getId()
     {
-        return $this->descricao;
+        return $this->id;
     }
 
     /**
-     * Set the value of descricao
+     * Set the value of id
      *
      * @return  self
      */ 
-    public function setDescricao($descricao)
+    public function setId($id)
     {
-        $this->descricao = $descricao;
+        $this->id = $id;
 
         return $this;
     }
 
     /**
-     * Get the value of preco
+     * Get the value of duracao_min
      */ 
-    public function getPreco()
+    public function getDuracao_min()
     {
-        return $this->preco;
+        return $this->duracao_min;
     }
 
     /**
-     * Set the value of preco
+     * Set the value of duracao_min
      *
      * @return  self
      */ 
-    public function setPreco($preco)
+    public function setDuracao_min($duracao_min)
     {
-        $this->preco = $preco;
+        $this->duracao_min = $duracao_min;
 
         return $this;
     }
@@ -70,21 +71,21 @@ class Produto extends Model{
     }
 
     /**
-     * Get the value of id
+     * Get the value of preco
      */ 
-    public function getId()
+    public function getPreco()
     {
-        return $this->id;
+        return $this->preco;
     }
 
     /**
-     * Set the value of id
+     * Set the value of preco
      *
      * @return  self
      */ 
-    public function setId($id)
+    public function setPreco($preco)
     {
-        $this->id = $id;
+        $this->preco = $preco;
 
         return $this;
     }

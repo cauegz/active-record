@@ -1,11 +1,8 @@
 <?php
-use App\Models\Produto;
+use App\Models\Usuario;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$produto = new Produto();
-$produto->setNome("nome");
-$produto->setDescricao("descricao");
-$produto->setPreco(10.50);
+$usuario = new Usuario();
 
-var_dump(Produto::all());
+var_dump(Usuario::all());

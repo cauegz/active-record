@@ -61,6 +61,20 @@ abstract class Model {
         return $stmt->fetchAll();
     }
 
+    /**
+     * Retorna um array de objetos, que tem a coluna $campo com o $valor em comum
+     */
+    public static function where($campo, $valor){
+        $sql = "SELECT * FROM " . static::$table . " WHERE $campo = :valor";
+        $stmt = static::getPDO()->prepare($sql);
+        $stmt->bindValue(":valor", $valor);
+        $stmt->execute();
+        
+        $stmt->setFetchMode(PDO::FETCH_CLASS, static::class);
+
+        return $stmt->fetchAll();
+    }
+
     protected static function getPDO(){
         if(!isset(static::$pdo)) static::$pdo = Conexao::getConnection();
         return static::$pdo;
