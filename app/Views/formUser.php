@@ -6,6 +6,10 @@
     <title>Cadastrar usuário</title>
 </head>
 <body>
-    nome: <?= $nome ?>
+    <?php foreach($dados as $linha): ?>
+        <h1><?= $linha->getNome() ?></h1>
+        <h2><?= $linha->getEmail() ?></h2>
+        <p><?= $linha->getTelefone() ?></p>
+    <?php endforeach; ?>
 </body>
 </html>

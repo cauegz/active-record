@@ -2,9 +2,11 @@
 namespace App\Controllers;
 
 use App\Controllers\ControladorGeral;
+use App\Models\Usuario;
 
 class ControladorUsuario extends ControladorGeral{
     public function formulario(){
-        $this->render("formUser", ["nome" => "issoéumnome"]);
+        $dados = Usuario::all();
+        $this->render("formUser", ["dados" => $dados]);
     }
 }
