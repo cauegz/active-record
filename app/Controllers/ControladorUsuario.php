@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Controllers\ControladorGeral;
 use App\Models\Usuario;
+use Exception;
 
 class ControladorUsuario extends ControladorGeral{
     public function index(){
@@ -19,12 +20,16 @@ class ControladorUsuario extends ControladorGeral{
 
     public function enviar(){
         extract($_POST);
-        $usuario = new Usuario();
-        $usuario->setNome($nome);
-        $usuario->setEmail($email);
-        $usuario->setTelefone($telefone);
-        $usuario->setSenha($senha);
-        $usuario->save();
+        try{
+            $usuario = new Usuario();
+            $usuario->setNome($nome);
+            $usuario->setEmail($email);
+            $usuario->setTelefone($telefone);
+            $usuario->setSenha($senha);
+            $usuario->save();
+        } catch(Exception $e){
+            echo "Ocorreu um erro ao salvar. Mensagem:" . $e->getMessage();
+        }
         header("Location: /usuario");
     }
 
@@ -47,7 +52,16 @@ class ControladorUsuario extends ControladorGeral{
         $this->render("formUser", ["dados" => $dados, "padrao" => $padrao]);
     }
 
-    public function processa(){
-        
+    public function processa($id){
+        extract($_POST);
+        try{
+            $usuario = Usuario::find($id);
+            $usuario->setNome($nome)->setEmail($email)->setTelefone($telefone)->setSenha($senha)->save();
+    
+        } catch(Exception $e){
+            die("Ocorreu um erro ao salvar. Mensagem: " . $e->getMessage());
+        }
+
+        header("Location: /usuario");
     }
 }

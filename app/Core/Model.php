@@ -32,7 +32,8 @@ abstract class Model {
             $stmt->bindValue(":$campo", $valor);
         }
         
-        return $stmt->execute();
+        $stmt->execute();
+        return static::getPDO()->lastInsertId();
     }
 
     public function delete(){

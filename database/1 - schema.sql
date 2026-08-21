@@ -61,19 +61,27 @@ ALTER TABLE agendamento
 ALTER TABLE agendamento
   ADD CONSTRAINT FK_usuario_TO_agendamento
     FOREIGN KEY (id_usuario)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
     REFERENCES usuario (id);
 
 ALTER TABLE agendamento_servicos
   ADD CONSTRAINT FK_servicos_TO_agendamento_servicos
     FOREIGN KEY (id_servico)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
     REFERENCES servicos (id);
 
 ALTER TABLE agendamento_servicos
   ADD CONSTRAINT FK_agendamento_TO_agendamento_servicos
     FOREIGN KEY (id_agendamento)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
     REFERENCES agendamento (id);
 
 ALTER TABLE funcionario
   ADD CONSTRAINT FK_especialidade_TO_funcionario
     FOREIGN KEY (id_especialidade)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
     REFERENCES especialidade (id);

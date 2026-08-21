@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use App\Core\Model;
+use Exception;
 
 class Usuario extends Model{
     protected static string $table = "usuario";
@@ -65,6 +66,7 @@ class Usuario extends Model{
      */ 
     public function setTelefone($telefone)
     {
+        if(mb_strlen($telefone) < 11) throw new Exception('telefone não é válido');
         $this->telefone = $telefone;
 
         return $this;
@@ -85,6 +87,7 @@ class Usuario extends Model{
      */ 
     public function setEmail($email)
     {
+        if(!(filter_var($email, FILTER_VALIDATE_EMAIL))) throw new Exception('email não é válido');
         $this->email = $email;
 
         return $this;
@@ -105,6 +108,7 @@ class Usuario extends Model{
      */ 
     public function setNome($nome)
     {
+        if(mb_strlen($nome) < 2) throw new Exception('nome não é válido');
         $this->nome = $nome;
 
         return $this;
