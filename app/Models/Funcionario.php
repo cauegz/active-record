@@ -34,7 +34,7 @@ class Funcionario extends Model{
     /**
      * Get the value of id_especialidade
      */ 
-    public function getId_especialidade()
+    public function getIdEspecialidade()
     {
         return $this->id_especialidade;
     }
@@ -44,7 +44,7 @@ class Funcionario extends Model{
      *
      * @return  self
      */ 
-    public function setId_especialidade($id_especialidade)
+    public function setIdEspecialidade($id_especialidade)
     {
         $this->id_especialidade = $id_especialidade;
 

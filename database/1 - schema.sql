@@ -8,7 +8,7 @@ CREATE TABLE agendamento
     PRIMARY KEY (id)
 );
 
-CREATE TABLE agendamento_servicos
+CREATE TABLE agendamento_servico
 (
     id             INT NOT NULL GENERATED ALWAYS AS IDENTITY,
     id_servico     INT NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE funcionario
     PRIMARY KEY (id)
 );
 
-CREATE TABLE servicos
+CREATE TABLE servico
 (
     id          INT          NOT NULL GENERATED ALWAYS AS IDENTITY,
     nome        VARCHAR(100) NOT NULL,
@@ -64,15 +64,15 @@ ALTER TABLE agendamento
         ON DELETE CASCADE
         ON UPDATE CASCADE;
 
-ALTER TABLE agendamento_servicos
-    ADD CONSTRAINT FK_servicos_TO_agendamento_servicos
+ALTER TABLE agendamento_servico
+    ADD CONSTRAINT FK_servico_TO_agendamento_servico
         FOREIGN KEY (id_servico)
-        REFERENCES servicos (id)
+        REFERENCES servico (id)
         ON DELETE CASCADE
         ON UPDATE CASCADE;
 
-ALTER TABLE agendamento_servicos
-    ADD CONSTRAINT FK_agendamento_TO_agendamento_servicos
+ALTER TABLE agendamento_servico
+    ADD CONSTRAINT FK_agendamento_TO_agendamento_servico
         FOREIGN KEY (id_agendamento)
         REFERENCES agendamento (id)
         ON DELETE CASCADE

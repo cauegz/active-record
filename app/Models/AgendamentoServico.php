@@ -32,7 +32,7 @@ class AgendamentoServico extends Model{
     /**
      * Get the value of id_agendamento
      */ 
-    public function getId_agendamento()
+    public function getIdAgendamento()
     {
         return $this->id_agendamento;
     }
@@ -42,7 +42,7 @@ class AgendamentoServico extends Model{
      *
      * @return  self
      */ 
-    public function setId_agendamento($id_agendamento)
+    public function setIdAgendamento($id_agendamento)
     {
         $this->id_agendamento = $id_agendamento;
 
@@ -52,7 +52,7 @@ class AgendamentoServico extends Model{
     /**
      * Get the value of id_servico
      */ 
-    public function getId_servico()
+    public function getIdServico()
     {
         return $this->id_servico;
     }
@@ -62,7 +62,7 @@ class AgendamentoServico extends Model{
      *
      * @return  self
      */ 
-    public function setId_servico($id_servico)
+    public function setIdServico($id_servico)
     {
         $this->id_servico = $id_servico;
 

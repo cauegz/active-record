@@ -1,3 +1,10 @@
+<?php
+use App\Models\Usuario;
+/**
+ * @var array<string> $padrao
+ * @var array<Usuario> $dados
+ */
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

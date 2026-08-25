@@ -33,7 +33,7 @@ class Servico extends Model{
     /**
      * Get the value of duracao_min
      */ 
-    public function getDuracao_min()
+    public function getDuracaoMin()
     {
         return $this->duracao_min;
     }
@@ -43,7 +43,7 @@ class Servico extends Model{
      *
      * @return  self
      */ 
-    public function setDuracao_min($duracao_min)
+    public function setDuracaoMin($duracao_min)
     {
         $this->duracao_min = $duracao_min;
 

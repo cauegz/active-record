@@ -57,7 +57,6 @@ class ControladorUsuario extends ControladorGeral{
         try{
             $usuario = Usuario::find($id);
             $usuario->setNome($nome)->setEmail($email)->setTelefone($telefone)->setSenha($senha)->save();
-    
         } catch(Exception $e){
             die("Ocorreu um erro ao salvar. Mensagem: " . $e->getMessage());
         }

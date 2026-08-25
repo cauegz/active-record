@@ -2,7 +2,6 @@
 namespace App\Models;
 
 use App\Core\Model;
-use DateTime;
 
 class Agendamento extends Model{
     protected static string $table = "agendamento";
@@ -10,7 +9,7 @@ class Agendamento extends Model{
     protected int $id_funcionario;
     protected int $id_usuario;
     protected bool $infantil;
-    protected DateTime $horario;
+    protected string $horario;
 
     /**
      * Get the value of id
@@ -67,7 +66,7 @@ class Agendamento extends Model{
      */ 
     public function setInfantil($infantil)
     {
-        $this->infantil = $infantil;
+        $this->infantil = $infantil == "true" || $infantil == "1";
 
         return $this;
     }
@@ -75,7 +74,7 @@ class Agendamento extends Model{
     /**
      * Get the value of id_usuario
      */ 
-    public function getId_usuario()
+    public function getIdUsuario()
     {
         return $this->id_usuario;
     }
@@ -85,7 +84,7 @@ class Agendamento extends Model{
      *
      * @return  self
      */ 
-    public function setId_usuario($id_usuario)
+    public function setIdUsuario($id_usuario)
     {
         $this->id_usuario = $id_usuario;
 
@@ -95,7 +94,7 @@ class Agendamento extends Model{
     /**
      * Get the value of id_funcionario
      */ 
-    public function getId_funcionario()
+    public function getIdFuncionario()
     {
         return $this->id_funcionario;
     }
@@ -105,7 +104,7 @@ class Agendamento extends Model{
      *
      * @return  self
      */ 
-    public function setId_funcionario($id_funcionario)
+    public function setIdFuncionario($id_funcionario)
     {
         $this->id_funcionario = $id_funcionario;
 

@@ -23,7 +23,7 @@ INSERT INTO usuario (nome, email, telefone, senha) VALUES
 
 
 -- SERVIÇOS
-INSERT INTO servicos (nome, preco, duracao_min) VALUES
+INSERT INTO servico (nome, preco, duracao_min) VALUES
 ('Corte de cabelo', 50.00, 40),
 ('Corte infantil', 40.00, 30),
 ('Barba', 35.00, 30),
@@ -43,7 +43,7 @@ INSERT INTO agendamento
 
 
 -- SERVIÇOS DE CADA AGENDAMENTO
-INSERT INTO agendamento_servicos (id_servico, id_agendamento) VALUES
+INSERT INTO agendamento_servico (id_servico, id_agendamento) VALUES
 -- Agendamento 1: corte + barba
 (1, 1),
 (3, 1),
