@@ -19,7 +19,7 @@ try {
                 ->setInfantil("false")
                 ->setHorario("2026-08-25 14:00:00")
                 ->save();
-    $agendamento->setId($id);
+    //$agendamento->setId($id);
     var_dump($agendamento);
     echo "<br>Testando READ<br>";
     if (!(Agendamento::all())) echo "tem nada no banco";

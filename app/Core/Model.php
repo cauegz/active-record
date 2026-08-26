@@ -29,6 +29,7 @@ abstract class Model {
         }
         $stmt = static::getPDO()->prepare($sql);
         foreach($atributos as $campo => $valor){
+            if(is_bool($valor)) $valor = $valor ? 'true' : 'false';
             $stmt->bindValue(":$campo", $valor);
         }
         
