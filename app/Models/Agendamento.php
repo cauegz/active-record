@@ -66,7 +66,8 @@ class Agendamento extends Model{
      */ 
     public function setInfantil($infantil)
     {
-        $this->infantil = $infantil == "true" || $infantil == "1";
+        if(!is_bool($infantil)) $infantil = $infantil == "true" || $infantil == "1";
+        $this->infantil = $infantil;
 
         return $this;
     }
