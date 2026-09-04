@@ -19,10 +19,15 @@ $router->addRoute("/teste/agendamentoServico", "Teste@agendamentoServico");
 //rotas fixas sempre antes de dinamicas
 $router->addRoute("/", "Home@index");
 $router->addRoute("/usuario", "Usuario@index");
+$router->addRoute("/funcionario", "Funcionario@index");
 $router->addRoute("/usuario/enviar", "Usuario@enviar");
+$router->addRoute("/funcionario/enviar", "Funcionario@enviar");
 $router->addRoute("/usuario/processa/{id}", "Usuario@processa");
+$router->addRoute("/funcionario/processa/{id}", "Funcionario@processa");
 $router->addRoute("/usuario/excluir/{id}", "Usuario@excluir");
+$router->addRoute("/funcionario/excluir/{id}", "Funcionario@excluir");
 $router->addRoute("/usuario/editar/{id}", "Usuario@editar");
+$router->addRoute("/funcionario/editar/{id}", "Funcionario@editar");
 
 
 $router->execute(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
